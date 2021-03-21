@@ -96,6 +96,10 @@ usa diversi flag per fare scansioni di tipo diverso.
     \item Scansione UDP \\
         \textbf{ \#nmap  -v -sU 192.168.1.15}
 \end{itemize}
+
+\textbf{ Hping3}\cite{hping3} viene usato alla stregua di \textbf{nmap}\cite{nmap} per avere delle informazioni sulle porte di un server.
+%Riporto alcuni esempi di uso comune:\\
+
 \section{ Enumerazione  dei servizi (Enumeration)}
 
 L'enumerazione è quella tecnica usata per chiedere informazioni lecite ad un servizio per sapere che cosa è memorizzato in quel servizio, questo ci permette di conoscere utenti,  nome macchina, domini, stato dei servizi, versioni software, ecc.. \\
@@ -122,40 +126,66 @@ Tutti i servizi possono essere analizzati con tecniche di enumerazione, quelli c
     \item servizio\textbf{ active directory porta 445}
 \end{itemize}
 
+
+
 \section{ Elenco delle Vulnerabilità (Vulnerability Assessment) }
 
-Raccolta informazioni sulle vulnerabilità conosciute che quel servizio può avere.
-Tools da usare
+Dopo aver raccolto le informazioni sui servizi associati alle porte aperte e dopo aver fatto l'enumerazione di tali servizi si passa all'analisi delle vulnerabilità conosciute che quel servizio può avere.\\
+La durata dell'analisi dipende da quanti servizi e quante informazioni si sono raccolte nelle fasi precedenti.
+Il lavoro può essere svolto manualmente oppure usando dei tools che velocizzano l'analisi, spesso si procede con entrambe le modalità per cercare il maggior numero di vulnerabilità associate al target da analizzare. \\
+I tools più comuni sono:
 \begin{itemize}
    
   \item Nessus\cite{nessus}
   \item Openvas \cite{openvas}
-  \item nikto\cite{nikto} per informazioni sulle vulnerabilità web
-  \item Metasploit\cite{metasploit}, per avere un elenco completo di vulnerabilità e test sulle vulnerabilità.
+  \item nikto\cite{nikto} per informazioni sulle vulnerabilità web, test delle sole applicazioni web.
+  \item Metasploit\cite{metasploit}, questo tools opensource ha una versione PRO a pagamento.
 \end{itemize}
 
 \section{  Sfruttamento delle vulnerabilità (penetration test) }
 
-Uso di vulnerabilità conosciute per testare se queste sono presenti e se possono essere sfruttate. Sono la base per poi fare accesso al sistema, una vulnerabilità può essere sfruttata per esempio per leggere l'elenco degli utenti del sistema e per cercare file con dati sensibili. Un file con dati sensibili potrebbe essere un \texttt{file excel con le password} per esempio. 
-Usando l'elenco dei servizi e delle vulnerabilità trovate nei punti precedenti si può cercare se esistono dei POC o degli exploit già pronti sui siti di exploit conosciuti. Metasploit\cite{metasploit} è una suite con un elenco di vulnerabilità già pronte per essere usate con i relativi paylod ed exploit per tentare di guadagnare l'accesso ai sistemi.
-Un'ottima risorsa è il sito explot-db\cite{explot-db} dove si possono cercare le vulnerabilità ed i relativi POC da usare.
+Il lavoro di "Vulnerability Assessment" si occupa della rilevazione delle vulnerabilità, il passo successivo invece si occupa di usare le vulnerabilità con i relativi POC per testare se queste sono effettivamente presenti e se possono essere usate per accedere al sistema. L'elenco delle vulnerabilità sono la lista delle armi a nostra disposizione per cercare di effettuare l'accesso al sistema.\\ 
+Una vulnerabilità può essere sfruttata, per esempio, per leggere l'elenco degli utenti del sistema e per cercare file con dati sensibili. Un file con dati sensibili potrebbe essere un \texttt{file excel con le password} per esempio. \\ 
+A questo punto nasce il dubbio: "avendo l'elenco dei servizi e delle vulnerabilità trovate nei punti precedenti, dove si può cercare se esistono dei POC o degli exploit già pronti?" \\
+La risposta è: "sui siti di exploit conosciuti, o all'interno dei tools che abbiamo visto prima". \\ Metasploit\cite{metasploit} è una suite con un elenco di vulnerabilità da testare e una lista di  paylod ed exploit già pronti per essere usati per tentare di guadagnare l'accesso ai sistemi. \\
+Un'altra ottima risorsa è il sito explot-db\cite{explot-db} dove un motore di ricerca aiuta nell'individuare le vulnerabilità ed i relativi POC.
 
 \section{ Accesso al sistema }
 
-Metodi di accesso al sistema con le vulnerabilità trovate prima, uso di POC e software che sfruttano le vulnerabilità elencate nelle fasi precedenti.
+L'accesso al sistema, che si ottiene con le vulnerabilità trovate prima, non sempre è un accesso con permessi di amministrazione.\\
+Il software che abbiamo sfruttato con la sua vulnerabilità ci farà accedere al sistema con i privilegi con cui stava girando come processo.\\
+L'accesso, anche con privilegi bassi, ci fornisce la possibilità di fare ulteriori ricerche sul sistema per cercare informazioni e altre vulnerabilità che da remoto non sono accessibili.
+Il primo accesso è importante, questo ci fornisce una strada per allargare la superficie d'attacco e per aumentare la conoscenza del target e poter passare le informazioni allo step successivo.
+
 
 \section{  Aumentare i privilegi (Privilege Escalation) }
 
-Cercare ulteriori metodi per accedere con privilegi superiori, uso di vulnerabilità locali  al sistema operativo oppure iniezioni di codice che manda in  errore un elemento del sistema operativo fino ad avere accesso all'utente amministratore.
+Cercare ulteriori metodi per accedere con privilegi superiori, uso di vulnerabilità locali  al sistema operativo oppure iniezioni di codice che manda in  errore un elemento del sistema operativo fino ad avere accesso a sessioni come amministratore. I metodi da usare sono tanti, la conoscenza e lo studio del sistema operativo deve essere elevata, non c'è una strada da percorrere e bisogna fare tanti tentativi. 
+Proviamo a fare un elenco di cose da controllare, con la consapevolezza che l'elenco può non essere esaustivo:\\
+\begin{itemize}
+   
+  \item Cercare programmi installati con bug
+  \item Cercare programmi che girano con setuid
+  \item Cercare programmi che girano con setgid
+  \item Controllare i sudoers
+  \item Cercare servizi locali con vulnerabilità note
+  \item Cercare file con backup 
+  \item Cercare file personali contenenti informazioni (File History, Pofili, ecc..)
+  \item Controllare la lista utenti
+  
+\end{itemize}
 
 \section{  Installazione backdoor, malware, trojan, ecc..}
 
-Guadagnando l'accesso come amministratore si hanno le autorizzazioni per installare software sul sistema all'insaputa del proprietario, degli amministratori e sopratutto per farlo eseguire in automatico al prossimo riavvio. Questo permette di instaurare un canale di accesso preferenziale non controllabile per accedere in maniera nascosta saltando tutti i controlli di sicurezza. 
+A questo punto se abbiamo guadagnato l'accesso come amministratore si hanno le autorizzazioni per installare software sul sistema all'insaputa del proprietario, degli amministratori e sopratutto per farlo eseguire in automatico al prossimo riavvio. Questo permette di instaurare un canale di accesso preferenziale non controllabile per accedere in maniera nascosta saltando tutti i controlli di sicurezza. \\
+L'elenco delle backdor che si possono installare sono tante e dipende dal software a disposizione e dal Sistema Operativo in oggetto.
 
 \section{  Cancellazione delle tracce}
 
-Cancellare log di sistema, eventi e tracce in modo che non si possa risalire all'attacco e sopratutto non si possa risalire a cosa è stato installato.
-\medskip
+Metasploit\cite{metasploit} ha nell'elenco dei comandi una voce "ClearEvent", questa permette di cancellare le tracce in modo che non si possa risalire all'attacco e a ciò che si è fatto sul sistema.\\
+Attaccanti più scrupolosi procedono manualmente  a modificare o cancellare log di sistema, eventi e tracce che permettono di risalire all'origine dell'attacco.\\
+Gli attacchi più sofisticati durano diversi giorni e una prerogativa di questi attacchi sono il non lasciare tracce, sopratutto per non risalire a cosa è stato fatto o installato su un sitema.
+%\medskip
 
 %Bibliographic references
 \begin{thebibliography}{15}
