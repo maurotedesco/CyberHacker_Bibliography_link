@@ -1,0 +1,215 @@
+\documentclass[a4paper,12pt]{article}
+%\documentclass[a4paper,14pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[nottoc]{tocbibind} %Adds "References" to the table of contents
+
+%Document title, author and date (empty)
+\title{Bibliography Cyber Security\\ \texttt{Book and Link } \\ for Student in Cyber Security}
+\author{Mauro Tedesco }
+\date{28/01/2021}
+
+%Beginning of the document
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduzione}
+
+Durante i corsi di sicurezza informatica vengono utilizzate diverse risorse on-line, non è semplice ricordarsi tutti i link e per questo motivo di seguito provo a fare un pò di ordine riportando i link alle risorse in relazione agli argomenti trattati.
+Questa raccolta di Link e book è stata preparata durante i corsi di sicurezza ed è in perenne evoluzione, consiglio di controllare i link riportati e nel caso aggiornare il proprio segnalibro.
+L'elenco di libri e link può essere usato anche come riferimento per approfondire le tematiche di sicurezza informatica indipendentemente dai corsi seguiti. Esorto chiunque ad aggiornare i propri segnalibri per aumentare la conoscenza ed il proprio interesse legato al mondo della cyber security.
+
+\section{Metodologia}
+
+Nei corsi di "Sicurezza Informatica" si insegnano metodi standard e procedure riconosciute nel mondo del lavoro, ogni organizzazione usa la propria procedura, di seguito viene proposto un metodo da seguire per  raccogliere informazioni e definire la superficie d'attacco.
+Questa superficie è la base per cercare un elenco di vulnerabilità da usare al fine di ottenere l'accesso ai sistemi. 
+L'obiettivo primario non è solo ottenere l'accesso ai sistemi ma mantenerne l'accesso.
+Per mantenere l'accesso bisogna cercare di installare un programma e per farlo spesso servono privilegi di amministratore, per questo motivo dopo il primo accesso si cerca  un modo per
+aumentare i privilegi e poter installare del software con poteri amministrativi.
+\\ La fase successiva, importante per non farsi rintracciare, prevede la cancellazione delle tracce
+in modo da non essere scoperti.
+I passi riportati sono quelli usati durante lo studio dell'hacking etico:
+
+\begin{itemize}
+\item Raccolta Informazioni (Gatherin Information)
+\item Scansioni (Scanning)
+\item Enumerazione  dei servizi (Enumeration)
+\item Elenco delle Vulnerabilità (Vulnerability Assessment)
+\item Sfruttamento delle vulnerabilità (penetration test)
+\item Accesso al sistema
+\item Aumentare i privilegi (Privilege Escalation)
+\item Installazione backdoor, malware, trojan, ecc..
+\item Cancellazione delle tracce
+
+\end{itemize}
+
+\section{Raccolta Informazioni}
+
+La raccolta delle informazioni può essere fatta in maniera passiva oppure attiva. 
+Le informazioni in maniera passiva vengono raccolte utilizzando siti web che fanno questo di mestiere, utilizzando delle query personalizzate si ottengono informazioni preziose per l'analisi del nostro target. \\
+I siti da utilizzare sono essere tanti, con il passare del tempo e con l'esperienza ognuno compila un suo elenco personalizzato. \\ Di seguito riporto quelli che vengono usati durante i corsi di sicurezza, insieme ai comandi di sistema.\\ 
+\\
+Comandi di sistema:
+
+\begin{itemize}
+    \item ricerche tramite ping 
+    \item ricerche tramite dns
+\end{itemize}
+Siti:
+\begin{itemize}
+    \item ricerche tramite \textbf{shodan} \cite{shodan}
+    \item analisi della storia del sito web tramite \textbf{netcraft} \cite{netcraft}
+    \item analisi della storia del sito web tramite \textbf{WaybackMachine} \cite{wayback}
+    \item esistenza di una mail usando la ricerca tramite \textbf{Centralops} \cite{centralops}.
+\end{itemize}
+
+Tutte queste informazioni possono essere organizzate in un report o un grafico finale. Esistono dei programmi o tools  per fare questo in maniera centralizzata integrando le ricerche e le query in una unica interfaccia e permettono di presentarle in formato grafico o in report.
+\\ Uno di questi è \textbf{"Maltego}"\cite{maltego} di \textbf{paterva}\cite{paterva}. 
+
+\section{ Scansioni (Scanning) }
+
+La tecnica di scansione di un Ip o di una intera rete viene effettuata per cercare le eventuali porte aperte su un sistema. Tale tecnica viene implementata sfruttando le caratteristiche del TCP/IP che prevede l'uso di flag all'interno di ogni pacchetto che viene inviato sulla rete. La conoscenza di questi flag e del protocollo TCP/IP permette di avere informazioni sulle porte aperte e sui servizi che girano su queste porte. \\
+Il software principale che viene usato per le scansioni è: \\
+\textbf{nmap}\cite{nmap} \\
+Nmap può essere usato con tutte le sue opzioni per fare dei controlli accurati e personalizzati.
+Un altro software per le scansioni è: \\
+\textbf{ hping3}\cite{hping3}.
+
+\subsection{Tipologia di scansioni}
+Si possono fare diversi tipi di scansioni usando i diversi flag del TCP/IP, \textbf{nmap}\cite{nmap} \\ usa diversi flag per fare scansioni di tipo diverso.
+\begin{itemize}
+    \item Scansione null scan \\
+      \textbf{ \#nmap  -v -sn 192.168.1.15}
+    \item Scansione full scan \\
+        \textbf{ \#nmap  -v -sT 192.168.1.15}
+    \item Scansione Xmas \\
+        \textbf{ \#nmap  -v -sn 192.168.1.15}
+    \item Scansione IDLE/ID \\
+        \textbf{ \#nmap  -v -sn 192.168.1.15}
+    \item Scansione TCP \\
+        \textbf{ \#nmap  -v -sn 192.168.1.15}
+    \item Scansione UDP \\
+        \textbf{ \#nmap  -v -sU 192.168.1.15}
+\end{itemize}
+\section{ Enumerazione  dei servizi (Enumeration)}
+
+L'enumerazione è quella tecnica usata per chiedere informazioni lecite ad un servizio per sapere che cosa è memorizzato in quel servizio, questo ci permette di conoscere utenti,  nome macchina, domini, stato dei servizi, versioni software, ecc..
+Tutti i servizi possono essere analizzati con tecniche di enumerazione, quelli che vengono maggiormente interrogati sono quelli di seguito elencati che danno maggiori informazioni per le fasi successive:
+\begin{itemize}
+
+    \item servizio\textbf{ ftp porta 21} \\
+        \textbf{ \#telnet  192.168.1.15 21}
+    \item servizio \textbf{ssh porta 22} \\
+        \textbf{ \#ssh -v 192.168.1.15 21}
+    \item servizio \textbf{smtp porta 25} \\
+        \textbf{ \#telnet  192.168.1.15 25}
+     \item servizio \textbf{web porta 80} \\
+        \textbf{ browser http://192.168.1.15 21}
+    \item servizio \textbf{ldap porta 389} \\
+        \textbf{ \#ldapsearch -h [IP] -p [PORT] -x -s base}
+    \item servizio\textbf{ smb porta 139} \\
+        \textbf{ \#smbclient 192.168.1.15}
+    \item servizio\textbf{ snmp porta 161} \\
+         \textbf{ \#snmpwalk IP]}
+     \item servizio\textbf{ rpc porta 111} \\
+        rpcinfo - rpcinfo can be utilized to enumerate RPC services \\
+        \textbf{ \# rpcinfo -p [IP]}
+    \item servizio\textbf{ active directory porta 445}
+\end{itemize}
+
+\section{ Elenco delle Vulnerabilità (Vulnerability Assessment) }
+
+Raccolta informazioni sulle vulnerabilità conosciute che quel servizio può avere.
+Tools da usare
+\begin{itemize}
+   
+  \item Nessus\cite{nessus}
+  \item Openvas \cite{openvas}
+  \item nikto\cite{nikto} per informazioni sulle vulnerabilità web
+  \item Metasploit\cite{metasploit}, per avere un elenco completo di vulnerabilità e test sulle vulnerabilità.
+\end{itemize}
+
+\section{  Sfruttamento delle vulnerabilità (penetration test) }
+
+Uso di vulnerabilità conosciute per testare se queste sono presenti e se possono essere sfruttate. Sono la base per poi fare accesso al sistema, una vulnerabilità può essere sfruttata per esempio per leggere l'elenco degli utenti del sistema e per cercare file con dati sensibili. Un file con dati sensibili potrebbe essere un \texttt{file excel con le password} per esempio. 
+Usando l'elenco dei servizi e delle vulnerabilità trovate nei punti precedenti si può cercare se esistono dei POC o degli exploit già pronti sui siti di exploit conosciuti. Metasploit\cite{metasploit} è una suite con un elenco di vulnerabilità già pronte per essere usate con i relativi paylod ed exploit per tentare di guadagnare l'accesso ai sistemi.
+Un'ottima risorsa è il sito explot-db\cite{explot-db} dove si possono cercare le vulnerabilità ed i relativi POC da usare.
+
+\section{ Accesso al sistema }
+
+Metodi di accesso al sistema con le vulnerabilità trovate prima, uso di POC e software che sfruttano le vulnerabilità elencate nelle fasi precedenti.
+
+\section{  Aumentare i privilegi (Privilege Escalation) }
+
+Cercare ulteriori metodi per accedere con privilegi superiori, uso di vulnerabilità locali  al sistema operativo oppure iniezioni di codice che manda in  errore un elemento del sistema operativo fino ad avere accesso all'utente amministratore.
+
+\section{  Installazione backdoor, malware, trojan, ecc..}
+
+Guadagnando l'accesso come amministratore si hanno le autorizzazioni per installare software sul sistema all'insaputa del proprietario, degli amministratori e sopratutto per farlo eseguire in automatico al prossimo riavvio. Questo permette di instaurare un canale di accesso preferenziale non controllabile per accedere in maniera nascosta saltando tutti i controlli di sicurezza. 
+
+\section{  Cancellazione delle tracce}
+
+Cancellare log di sistema, eventi e tracce in modo che non si possa risalire all'attacco e sopratutto non si possa risalire a cosa è stato installato.
+\medskip
+
+%Bibliographic references
+\begin{thebibliography}{15}
+\bibitem{shodan}                % 1
+Shodan website
+\\\texttt{http://www.shodan.io}
+
+\bibitem{netcraft}              % 2
+Netcraft website
+\\\texttt{http://www.netcraft.com}
+
+\bibitem{centralops}            % 3
+Centralops website
+\\\texttt{http://www.centralops.net}
+
+\bibitem{maltego}               % 4
+Maltego website
+\\\texttt{http://www.maltego.org}
+
+\bibitem{paterva}               % 5
+Paterva website
+\\\texttt{http://www.paterva.com}
+
+\bibitem{nmap}                  % 6 
+Nmap website
+\\\texttt{http://www.nmap.org}
+
+\bibitem{hping3}                % 7
+Hping3 website
+\\\texttt{http://www.hping.org}
+
+\bibitem{nessus}                % 8
+Nessu website
+\\\texttt{http://www.nessus.org}
+
+\bibitem{openvas}               % 9
+OpenVas website
+\\\texttt{http://www.openvas.org/}
+
+\bibitem{nikto}                 % 10
+Nikto website
+\\\texttt{http://www.nikto.org}
+
+\bibitem{metasploit}                 % 11
+Metasploit website, azienda rapid7
+\\\texttt{http://www.rapid7.com/}
+
+\bibitem{explot-db}                 % 12
+Explot-db website
+\\\texttt{http://www.explot-db.com/}
+
+\bibitem{wayback}                 % 13
+WayBackMachine website
+\\\texttt{https://web.archive.org/}
+
+\end{thebibliography}
+
+\end{document}
