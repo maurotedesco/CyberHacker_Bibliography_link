@@ -80,24 +80,25 @@ Un altro software per le scansioni è: \\
 \textbf{ hping3}\cite{hping3}.
 
 \subsection{Tipologia di scansioni}
-Si possono fare diversi tipi di scansioni usando i diversi flag del TCP/IP, \textbf{nmap}\cite{nmap} \\ usa diversi flag per fare scansioni di tipo diverso.
+Si possono fare diversi tipi di scansioni usando i diversi flag del TCP/IP, \textbf{nmap}\cite{nmap}
+usa diversi flag per fare scansioni di tipo diverso.
 \begin{itemize}
-    \item Scansione null scan \\
+    \item Scansione Probe Only \\
       \textbf{ \#nmap  -v -sn 192.168.1.15}
-    \item Scansione full scan \\
+    \item Scansione Syn scan \\
+        \textbf{ \#nmap  -v -sS 192.168.1.15}
+    \item Scansione TCP scan \\
         \textbf{ \#nmap  -v -sT 192.168.1.15}
-    \item Scansione Xmas \\
-        \textbf{ \#nmap  -v -sn 192.168.1.15}
     \item Scansione IDLE/ID \\
-        \textbf{ \#nmap  -v -sn 192.168.1.15}
-    \item Scansione TCP \\
-        \textbf{ \#nmap  -v -sn 192.168.1.15}
+        \textbf{ \#nmap  -v -Pn -p- -sI HostZombie 192.168.1.15} 
+    \item Scansione Version scan \\
+        \textbf{ \#nmap  -v -sV 192.168.1.15}
     \item Scansione UDP \\
         \textbf{ \#nmap  -v -sU 192.168.1.15}
 \end{itemize}
 \section{ Enumerazione  dei servizi (Enumeration)}
 
-L'enumerazione è quella tecnica usata per chiedere informazioni lecite ad un servizio per sapere che cosa è memorizzato in quel servizio, questo ci permette di conoscere utenti,  nome macchina, domini, stato dei servizi, versioni software, ecc..
+L'enumerazione è quella tecnica usata per chiedere informazioni lecite ad un servizio per sapere che cosa è memorizzato in quel servizio, questo ci permette di conoscere utenti,  nome macchina, domini, stato dei servizi, versioni software, ecc.. \\
 Tutti i servizi possono essere analizzati con tecniche di enumerazione, quelli che vengono maggiormente interrogati sono quelli di seguito elencati che danno maggiori informazioni per le fasi successive:
 \begin{itemize}
 
