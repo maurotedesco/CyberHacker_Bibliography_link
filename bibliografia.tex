@@ -8,7 +8,7 @@
 %Document title, author and date (empty)
 \title{Bibliography Cyber Security\\ \texttt{Book and Link } \\ for Student in Cyber Security}
 \author{Mauro Tedesco }
-\date{28/01/2021}
+\date{28/05/2021}
 
 %Beginning of the document
 \begin{document}
@@ -92,7 +92,11 @@ usa diversi flag per fare scansioni di tipo diverso.
     \item Scansione IDLE/ID \\
         \textbf{ \#nmap  -v -Pn -p- -sI HostZombie 192.168.1.15} 
     \item Scansione Version scan \\
-        \textbf{ \#nmap  -v -sV 192.168.1.15}
+        \textbf{ \#nmap  -v -sV 192.168.1.15} 
+     \item Scansione con Decoy (Evading IDS) \\
+        \textbf{ \#nmap -v -D RND:20 192.168.1.15}     
+     \item Scansione con mac spoof (Evading IDS)\\
+        \textbf{ \#nmap –sS –PN –spoof-mac 0 192.168.0.30}
     \item Scansione UDP \\
         \textbf{ \#nmap  -v -sU 192.168.1.15}
 \end{itemize}
@@ -148,11 +152,13 @@ CVSS: comprendiamo di cosa si tratta.
 
 Il CVSS\cite{CVSS} è l’acronimo di Common Vulnerability Scoring System, un framework realizzato dalla FIRST\cite{First}, una organizzazione senza scopo di lucro con sede negli Stati uniti d’America ad oggi arrivato alla versione 3.1.
 
+Il framework è utilizzato per classificare le caratteristiche e la gravità dei punti deboli sfruttabili, creando un sistema di punteggio che valuta ogni singola vulnerabilità da 0 a 10.
+
 È il metodo più comunemente utilizzato per valutare le vulnerabilità presenti all'interno di un sistema software/hardware attraverso la metrica "base", anche se tale metrica può essere influenzata dai risultati di altre metriche temporali ed ambientali.
 
 Molti professionisti utilizzano il punteggio CVSS base, come metrica principale per determinare la gravità di un bug di sicurezza rilevato. 
 
-CVSS è un framework utilizzato per classificare le caratteristiche e la gravità dei punti deboli sfruttabili, creando un sistema di punteggio che valuta ogni singola vulnerabilità da 0 a 10.
+
 
 \section{  Sfruttamento delle vulnerabilità (penetration test) }
 
