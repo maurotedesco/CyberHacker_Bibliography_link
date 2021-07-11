@@ -8,7 +8,7 @@
 %Document title, author and date (empty)
 \title{Bibliography Cyber Security\\ \texttt{Book and Link } \\ for Student in Cyber Security}
 \author{Mauro Tedesco }
-\date{28/05/2021}
+\date{10 Luglio 2021}
 
 %Beginning of the document
 \begin{document}
@@ -21,7 +21,7 @@
 
 Durante i corsi di sicurezza informatica vengono utilizzate diverse risorse on-line, non è semplice ricordarsi tutti i link e per questo motivo di seguito provo a fare un pò di ordine riportando i link alle risorse in relazione agli argomenti trattati.
 Questa raccolta di Link e book è stata preparata durante i corsi di sicurezza ed è in perenne evoluzione, consiglio di controllare i link riportati e nel caso aggiornare il proprio segnalibro.
-L'elenco di libri e link può essere usato anche come riferimento per approfondire le tematiche di sicurezza informatica indipendentemente dai corsi seguiti. Esorto chiunque ad aggiornare i propri segnalibri per aumentare la conoscenza ed il proprio interesse legato al mondo della cyber security.
+Questo documento può essere usato anche come riferimento per approfondire le tematiche di sicurezza informatica indipendentemente dai corsi seguiti. Esorto sempre chiunque segua i miei corsi ad aggiornare i propri segnalibri per aumentare la conoscenza ed il proprio interesse legato al mondo della cyber security.
 
 \section{Metodologia}
 
@@ -49,9 +49,9 @@ I passi riportati sono quelli usati durante lo studio dell'hacking etico:
 
 \section{Raccolta Informazioni}
 
-La raccolta delle informazioni può essere fatta in maniera passiva oppure attiva. 
+La raccolta delle informazioni può essere fatta in maniera \textbf{passiva} oppure \textbf{attiva}. 
 Le informazioni in maniera passiva vengono raccolte utilizzando siti web che fanno questo di mestiere. Utilizzando delle query personalizzate si ottengono informazioni preziose per l'analisi del nostro target. \\
-I siti da utilizzare sono tanti, con il passare del tempo e con l'esperienza ognuno compila un suo elenco personalizzato. \\ Di seguito riporto quelli che vengono usati durante i corsi di sicurezza, insieme ai comandi di sistema.\\ 
+I siti che offrono informazioni on-line sono tanti, con il passare del tempo e con l'esperienza ognuno compila un suo elenco personalizzato. \\ Di seguito riporto quelli che vengono usati durante i miei corsi di sicurezza, insieme ai comandi di sistema.\\ 
 \\
 Comandi di sistema:
 
@@ -67,7 +67,7 @@ Siti:
     \item esistenza di una mail usando la ricerca tramite \textbf{Centralops} \cite{centralops}.
 \end{itemize}
 
-Tutte queste informazioni possono essere organizzate in un report o un grafico finale. Esistono dei programmi o tools  per fare questo in maniera centralizzata integrando le ricerche e le query in una unica interfaccia presentandole in formato grafico o report.
+Le informazioni raccolte  possono essere organizzate in un report o un grafico finale. Esistono dei programmi o tools  per fare questo in maniera centralizzata integrando le ricerche e le query in una unica interfaccia e presentandole in formato grafico o report.
 \\ Uno di questi è \textbf{"Maltego}"\cite{maltego} di \textbf{paterva}\cite{paterva}. 
 
 \section{ Scansioni (Scanning) }
@@ -79,7 +79,7 @@ Nmap può essere usato con tutte le sue opzioni per fare dei controlli accurati 
 Un altro software per le scansioni è: \\
 \textbf{ hping3}\cite{hping3}.
 
-\subsection{Tipologia di scansioni}
+\subsection{Esempi di scansioni con Nmap}
 Si possono fare diversi tipi di scansioni usando i diversi flag del TCP/IP, \textbf{nmap}\cite{nmap}
 usa diversi flag per fare scansioni di tipo diverso.
 \begin{itemize}
@@ -107,17 +107,17 @@ usa diversi flag per fare scansioni di tipo diverso.
 \section{ Enumerazione  dei servizi (Enumeration)}
 
 L'enumerazione è quella tecnica usata per chiedere informazioni lecite ad un servizio per sapere che cosa è memorizzato in quel servizio, questo ci permette di conoscere utenti,  nome macchina, domini, stato dei servizi, versioni software, ecc.. \\
-Tutti i servizi possono essere analizzati con tecniche di enumerazione, quelli che vengono maggiormente interrogati sono quelli di seguito elencati che danno maggiori informazioni per le fasi successive:
+Tutti i servizi possono essere analizzati con tecniche di enumerazione, quelli riportati di seguito sono degli esempi che potrebbero dare maggiori informazioni per le fasi successive:
 \begin{itemize}
 
     \item servizio\textbf{ ftp porta 21} \\
         \textbf{ \#telnet  192.168.1.15 21}
     \item servizio \textbf{ssh porta 22} \\
-        \textbf{ \#ssh -v 192.168.1.15 21}
+        \textbf{ \#ssh -v 192.168.1.15}
     \item servizio \textbf{smtp porta 25} \\
         \textbf{ \#telnet  192.168.1.15 25}
      \item servizio \textbf{web porta 80} \\
-        \textbf{ browser http://192.168.1.15 21}
+        \textbf{ browser http://192.168.1.15}
     \item servizio \textbf{ldap porta 389} \\
         \textbf{ \#ldapsearch -h [IP] -p [PORT] -x -s base}
     \item servizio\textbf{ smb porta 139} \\
@@ -146,6 +146,8 @@ I tools più comuni sono:
   \item Metasploit\cite{metasploit}, questo tools opensource ha una versione PRO a pagamento.
 \end{itemize}
 
+I tools oltre a fornire un report con le vulnerabilità trovate per ogni vulnerabilità riportano un valore di pericolosità, il CVSS ed il CVE.
+
 \subsection{CVSS}
 
 CVSS: comprendiamo di cosa si tratta.
@@ -158,27 +160,39 @@ Il framework è utilizzato per classificare le caratteristiche e la gravità dei
 
 Molti professionisti utilizzano il punteggio CVSS base, come metrica principale per determinare la gravità di un bug di sicurezza rilevato. 
 
+\subsection{CVE}
 
+CVE è l'acronimo di 
+
+\subsection{Esempi di uso di Nikto}
+
+\begin{itemize}
+
+\item Scansione con senplice con Nikto \\
+        \textbf{ \#nikto -h 192.168.1.15} \\
+        scansione semplice dell'host 192.168.1.15
+\end{itemize}
 
 \section{  Sfruttamento delle vulnerabilità (penetration test) }
 
 Il lavoro di "Vulnerability Assessment" si occupa della rilevazione delle vulnerabilità, il passo successivo invece si occupa di usare le vulnerabilità con i relativi POC per testare se queste sono effettivamente presenti e se possono essere usate per accedere al sistema. L'elenco delle vulnerabilità sono la lista delle armi a nostra disposizione per cercare di effettuare l'accesso al sistema.\\ 
 Una vulnerabilità può essere sfruttata, per esempio, per leggere l'elenco degli utenti del sistema e per cercare file con dati sensibili. Un file con dati sensibili potrebbe essere un \texttt{file excel con le password} per esempio. \\ 
 A questo punto nasce il dubbio: "avendo l'elenco dei servizi e delle vulnerabilità trovate nei punti precedenti, dove si può cercare se esistono dei POC o degli exploit già pronti?" \\
-La risposta è: "sui siti di exploit conosciuti, o all'interno dei tools che abbiamo visto prima". \\ Metasploit\cite{metasploit} è una suite con un elenco di vulnerabilità da testare e una lista di  paylod ed exploit già pronti per essere usati per tentare di guadagnare l'accesso ai sistemi. \\
-Un'altra ottima risorsa è il sito explot-db\cite{explot-db} dove un motore di ricerca aiuta nell'individuare le vulnerabilità ed i relativi POC.
+La risposta è: "sui siti di exploit conosciuti, o all'interno dei tools che abbiamo visto prima". \\\textbf{ Metasploit}\cite{metasploit} è una suite con un elenco di vulnerabilità da testare e una lista di  paylod ed exploit già pronti per essere usati per tentare di guadagnare l'accesso ai sistemi. \\
+Un'altra ottima risorsa è il sito\textbf{ explot-db}\cite{explot-db} dove un motore di ricerca aiuta nell'individuare le vulnerabilità ed i relativi POC.
 
 \section{ Accesso al sistema }
 
 L'accesso al sistema, che si ottiene con le vulnerabilità trovate prima, non sempre è un accesso con permessi di amministrazione.\\
 Il software che abbiamo sfruttato con la sua vulnerabilità ci farà accedere al sistema con i privilegi con cui stava girando come processo.\\
 L'accesso, anche con privilegi bassi, ci fornisce la possibilità di fare ulteriori ricerche sul sistema per cercare informazioni e altre vulnerabilità che da remoto non sono accessibili.
-Il primo accesso è importante, questo ci fornisce una strada per allargare la superficie d'attacco e per aumentare la conoscenza del target e poter passare le informazioni allo step successivo.
+Il primo accesso è importante, questo ci fornisce una strada per allargare la superficie d'attacco e per aumentare la conoscenza del target.
+Dopo aver guadagnato l'accesso al sistema usiamo tutte le nostre conoscenze per cercare informazioni da poter usare per lo step successivo.
 
 
 \section{  Aumentare i privilegi (Privilege Escalation) }
 
-Cercare ulteriori metodi per accedere con privilegi superiori, uso di vulnerabilità locali  al sistema operativo oppure iniezioni di codice che manda in  errore un elemento del sistema operativo fino ad avere accesso a sessioni come amministratore. I metodi da usare sono tanti, la conoscenza e lo studio del sistema operativo deve essere elevata, non c'è una strada da percorrere e bisogna fare tanti tentativi. 
+Cercare ulteriori metodi per accedere con privilegi superiori, uso di vulnerabilità locali  al sistema operativo oppure iniezioni di codice che manda in  errore un elemento del sistema operativo fino ad avere accesso a sessioni come amministratore. I metodi da usare sono tanti, la conoscenza e lo studio del sistema operativo deve essere elevata, non c'è una sola strada da percorrere e bisogna fare tanti tentativi. 
 Proviamo a fare un elenco di cose da controllare, con la consapevolezza che l'elenco può non essere esaustivo:\\
 \begin{itemize}
    
@@ -200,7 +214,7 @@ L'elenco delle backdor che si possono installare sono tante e dipende dal softwa
 
 \section{  Cancellazione delle tracce}
 
-Metasploit\cite{metasploit} ha nell'elenco dei comandi una voce "ClearEvent", questa permette di cancellare le tracce in modo che non si possa risalire all'attacco e a ciò che si è fatto sul sistema.\\
+\textbf{Metasploit}\cite{metasploit} ha nell'elenco dei comandi una voce "ClearEvent", questa permette di cancellare le tracce in modo che non si possa risalire all'attacco e a ciò che si è fatto sul sistema.\\
 Attaccanti più scrupolosi procedono manualmente  a modificare o cancellare log di sistema, eventi e tracce che permettono di risalire all'origine dell'attacco.\\
 Gli attacchi più sofisticati durano diversi giorni e una prerogativa di questi attacchi sono il non lasciare tracce, sopratutto per non risalire a cosa è stato fatto o installato su un sitema.
 %\medskip
@@ -209,63 +223,71 @@ Gli attacchi più sofisticati durano diversi giorni e una prerogativa di questi 
 \begin{thebibliography}{20}
 \bibitem{shodan}                % 1
 Shodan website
-\\\texttt{http://www.shodan.io}
+\\\texttt{https://www.shodan.io}
 
 \bibitem{netcraft}              % 2
 Netcraft website
-\\\texttt{http://www.netcraft.com}
+\\\texttt{https://www.netcraft.com}
 
 \bibitem{centralops}            % 3
 Centralops website
-\\\texttt{http://www.centralops.net}
+\\\texttt{https://www.centralops.net}
 
 \bibitem{maltego}               % 4
 Maltego website
-\\\texttt{http://www.maltego.org}
+\\\texttt{https://www.maltego.com}
 
 \bibitem{paterva}               % 5
 Paterva website
-\\\texttt{http://www.paterva.com}
+\\\texttt{https://www.paterva.com}
 
 \bibitem{nmap}                  % 6 
 Nmap website
-\\\texttt{http://www.nmap.org}
+\\\texttt{https://www.nmap.org}
 
 \bibitem{hping3}                % 7
-Hping3 website
-\\\texttt{http://www.hping.org}
+Hping3 GitHub
+\\\texttt{https://github.com/antirez/hping}
 
 \bibitem{nessus}                % 8
 Nessu website
-\\\texttt{http://www.nessus.org}
+\\\texttt{https://www.nessus.org}
 
 \bibitem{openvas}               % 9
 OpenVas website
-\\\texttt{http://www.openvas.org/}
+\\\texttt{https://www.openvas.org/}
 
 \bibitem{nikto}                 % 10
-Nikto website
-\\\texttt{http://www.nikto.org}
+Nikto website (Nikto2)
+\\\texttt{https://cirt.net/Nikto2}
 
 \bibitem{metasploit}                 % 11
 Metasploit website, azienda rapid7
-\\\texttt{http://www.rapid7.com/}
+\\\texttt{https://www.rapid7.com/}
 
 \bibitem{CVSS}                 % 12
 CVSS-First website 
-\\\texttt{http://www.first.org/cvss}
+\\\texttt{https://www.first.org/cvss}
 
 \bibitem{First}                 % 13
 First website
-\\\texttt{http://www.first.org}
+\\\texttt{https://www.first.org}
 
 \bibitem{explot-db}                 % 14
 Explot-db website
-\\\texttt{http://www.explot-db.com/}
+\\\texttt{https://www.explot-db.com/}
 
 \bibitem{wayback}                 % 15
 WayBackMachine website
 \\\texttt{https://web.archive.org/}
+
+\bibitem{gitnikto}                 % 16
+Git Nikto (Nikto2)
+\\\texttt{https://github.com/sullo/nikto}
+
+\bibitem{tenable}                 % 17
+Nessus Commerciale (prodotto Nessus)
+\\\texttt{https://www.tenable.com/products/nessus}
 
 \end{thebibliography}
 
