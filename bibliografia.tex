@@ -8,7 +8,7 @@
 %Document title, author and date (empty)
 \title{Bibliography Cyber Security\\ \texttt{Book and Link } \\ for Student in Cyber Security}
 \author{Mauro Tedesco }
-\date{10 Luglio 2021}
+\date{22 Ottobre 2021}
 
 %Beginning of the document
 \begin{document}
@@ -146,15 +146,25 @@ I tools più comuni sono:
   \item Metasploit\cite{metasploit}, questo tools opensource ha una versione PRO a pagamento.
 \end{itemize}
 
+\subsection{Esempi di uso di Nikto}
+
+\begin{itemize}
+
+\item Scansione con senplice con Nikto \\
+        \textbf{ \#nikto -h 192.168.1.15} \\
+        scansione semplice dell'host 192.168.1.15
+\end{itemize}
+
+
 I tools oltre a fornire un report con le vulnerabilità trovate per ogni vulnerabilità riportano un valore di pericolosità, il CVSS ed il CVE.
 
 \subsection{CVSS}
 
 CVSS: comprendiamo di cosa si tratta.
 
-Il CVSS\cite{CVSS} è l’acronimo di Common Vulnerability Scoring System, un framework realizzato dalla FIRST\cite{First}, una organizzazione senza scopo di lucro con sede negli Stati uniti d’America ad oggi arrivato alla versione 3.1.
+Il CVSS\cite{CVSS} è l’acronimo di Common Vulnerability Scoring System, un framework (ad oggi arrivato alla versione 3.1) realizzato dalla FIRST\cite{First}, una organizzazione senza scopo di lucro con sede negli Stati uniti d’America.
 
-Il framework è utilizzato per classificare le caratteristiche e la gravità dei punti deboli sfruttabili, creando un sistema di punteggio che valuta ogni singola vulnerabilità da 0 a 10.
+Il framework è utilizzato per classificare le caratteristiche e la gravità delle vulnerabilità e delle debolezze software, creando un sistema di punteggio che valuta ogni singola vulnerabilità da 0 a 10.
 
 È il metodo più comunemente utilizzato per valutare le vulnerabilità presenti all'interno di un sistema software/hardware attraverso la metrica "base", anche se tale metrica può essere influenzata dai risultati di altre metriche temporali ed ambientali.
 
@@ -184,14 +194,6 @@ L'elenco CVE è stato lanciato dal MITRE nel 1999 con il contributo della commun
 \item Sebbene separati, sia CVE che NVD sono sponsorizzati dalla Cybersecurity and Infrastructure Security Agency (CISA) del Department of Homeland Security (DHS) degli Stati Uniti ed entrambi sono disponibili al pubblico e gratuiti.
 \end{itemize}
 
-\subsection{Esempi di uso di Nikto}
-
-\begin{itemize}
-
-\item Scansione con senplice con Nikto \\
-        \textbf{ \#nikto -h 192.168.1.15} \\
-        scansione semplice dell'host 192.168.1.15
-\end{itemize}
 
 \section{  Sfruttamento delle vulnerabilità (penetration test) }
 
